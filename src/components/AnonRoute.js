@@ -17,4 +17,4 @@ const AnonRoute = ({ component: Component, isLogged, ...rest }) => {
     />
   )
 }
-export default withAuth(AnonRoute);
+export default withAuth(AnonRoute); 
