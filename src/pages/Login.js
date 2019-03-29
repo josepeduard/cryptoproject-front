@@ -11,8 +11,13 @@ class Login extends Component {
     const { username, password } = this.state
 
     this.props.login({ username, password })
-      .then(() => {
-        this.props.history.push('/form')
+      .then((data) => {
+        if(!data){
+          console.log("lo estamos haciendo bien")
+        }else{
+          console.log("push")
+        this.props.history.push('/')
+        }
       })
       .catch( error => console.log(error) )
   }

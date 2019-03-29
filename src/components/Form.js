@@ -5,6 +5,7 @@ import axios from 'axios';
 import Cryptocoin from './Cryptocoin'; 
 import Error from './Error'; 
 
+
 class Form extends Component {
     state = {
         cryptos:[],
@@ -60,9 +61,8 @@ class Form extends Component {
     render(){
 
         const message = (this.state.error) ? <Error message="Check if an input is empty" /> : '';
-        const { isLogged, user} = this.props;
+        const {user} = this.props;
         const { username } = user;
-        if (isLogged) {
         return(
         <form onSubmit={this.quoteCurrency}>
             
@@ -99,12 +99,7 @@ class Form extends Component {
             </div>
             <input className="button" type="submit" value="Cambiar" />
         </form> 
-        )} else {
-            return <div>
-              <Link to='/login'>Login</Link>
-              <Link to='/signup'>Signup</Link>
-            </div>
-          }
+        )
     }
 }
 
