@@ -37,10 +37,8 @@ class Login extends Component {
     
     return (
       <div className='login-box'>
-      
         <div className = 'login-box-inner'>
           <h1>Login</h1>
-          
           <form onSubmit={this.handleFormSubmit}>
           <div className="textbox" >
             <label className="icon"><FontAwesomeIcon icon="user" /></label>
@@ -50,12 +48,11 @@ class Login extends Component {
             <label className="icon"><FontAwesomeIcon icon="lock" /></label>
             <input type="password" placeholder="password" name="password" value={password} onChange={this.handleChange} />
           </div>
-          <input className="btn" type="submit" value="LoginFuck!" />
+          <input className="btn" type="submit" value="Login" />
           </form>
           
         </div>
-      </div>
-      
+   </div>
     )
   }
 }

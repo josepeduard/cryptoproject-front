@@ -1,16 +1,3 @@
-@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-
-/* body{
-    background: grey;
-    margin: 0;
-    padding: 0;
-    background: url(../images/image-back.jpg);
-    background-repeat: no-repeat;
-    background-size: auto; 
-
-    } 
- */
-
 .login-box{
   
     background: url(../images/image-back.jpg);
@@ -76,15 +63,4 @@
     font-weight: bold;
     cursor: pointer;
     margin: 12px 0;
-
-
-}
-
-
-.signup-box{
-    width: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

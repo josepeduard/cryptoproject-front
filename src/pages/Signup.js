@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 import "./Signup.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Signup extends Component {
 
@@ -34,17 +35,36 @@ class Signup extends Component {
     const { username, password } = this.state;
     return (
       <div className='signup-box'>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
-        </form>
-
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
-        </p>
+        <div className='signup-box-inner'>
+          <h1>Signup</h1>
+          <form onSubmit={this.handleFormSubmit}>
+          <div className="textbox" >
+            <label className="icon"><FontAwesomeIcon icon="user" /></label>
+            <input type="text" placeholder="username" name="username" value={username} onChange={this.handleChange}/>
+          </div>
+          <div className="textbox">
+          <label className="icon"><FontAwesomeIcon icon="lock" /></label>
+            <input type="password" placeholder="password" name="password" value={password} onChange={this.handleChange} />
+          </div>
+            <div>
+              <input className="btn" type="submit" value="Signup" />
+            </div>
+          
+            <div>
+              <Link to={"/login"}>
+              <input className="btn" type="submit" value="Go to the login" />
+              </Link>
+            </div>
+            
+            
+          </form>
+        </div>
+        {/* <div>
+          <p>Already have account? 
+           
+          </p>
+        </div>
+         */}
 
       </div>
     )
