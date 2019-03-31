@@ -6,7 +6,10 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
   render() {
@@ -23,5 +26,5 @@ class App extends Component {
     )
   }
 }
-
+library.add(faUser, faLock)
 export default App;
