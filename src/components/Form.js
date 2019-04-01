@@ -4,13 +4,18 @@ import { withAuth } from '../components/AuthProvider';
 import axios from 'axios';
 import Cryptocoin from './Cryptocoin'; 
 import Error from './Error'; 
-
+import walletService from '../lib/wallet-service'
 
 class Form extends Component {
     state = {
         cryptos:[],
         coin: '',
         crypto: '',
+        euros: '',
+        dolars: '',
+        yens: '',
+        bitcoin: '',
+        etherum: '',
         error: false
     }
     //Este método solo se ejecuta justo después de que el componente haya sido montado en el DOM.
@@ -19,11 +24,28 @@ class Form extends Component {
 
         await axios.get(url)
             .then(answer => {
-                 this.setState({
-                     cryptos: answer.data.Data
-                 })
+                    this.setState({
+                        cryptos: answer.data.Data
+                    })
             })
-    }
+        
+        walletService.getMyProfile()
+            .then((data) =>{
+                console.log(data);
+                this.setState({
+                    euros: data.Euro,
+                    dolars: data.Dolar,
+                    yens: data.Yen,
+                    bitcoin: data.Bitcoin,
+                    etherum: data.Ethereum
+                })
+                console.log(this.state)
+            })
+            .catch((err) =>{
+                console.log(err)
+            })
+    }    
+    
 
     handleChange = e => {
         const {name, value} = e.target;
@@ -59,12 +81,32 @@ class Form extends Component {
     }
 
     render(){
-
         const message = (this.state.error) ? <Error message="Check if an input is empty" /> : '';
+        const { euros, dolars, yens, bitcoin, etherum } = this.state
         const {user} = this.props;
         const { username } = user;
         return(
         <form onSubmit={this.quoteCurrency}>
+        <table>
+            <thead>
+                <tr>
+                    <th>Euros</th>
+                    <th>Dolars</th>
+                    <th>Yens</th>
+                    <th>Bitcoin</th> 
+                    <th>Etherum</th>                             
+                </tr>
+            </thead>
+                <tbody>
+                <tr>
+                    <td>{euros} €</td>
+                    <td>{dolars} $</td>
+                    <td>{yens} Y</td>
+                    <td>{bitcoin} Btc</td> 
+                    <td>{etherum} Eth</td>                             
+                </tr>
+            </tbody>
+        </table>
             
             {message}
             <div className="row-1">
@@ -105,4 +147,3 @@ class Form extends Component {
 
 
 export default withAuth(Form);
-
