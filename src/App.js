@@ -5,6 +5,7 @@ import AnonRoute from './components/AnonRoute';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Deposit from './pages/Deposit';
 import AuthProvider from './components/AuthProvider';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,6 +20,7 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
+            <PrivateRoute path="/Deposit" component={Deposit}/>
             <PrivateRoute path="/" component={Home} />
           </Switch>
         </div>

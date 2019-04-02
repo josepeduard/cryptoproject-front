@@ -12,8 +12,6 @@ class Form extends Component {
         coin: '',
         crypto: '',
         euros: '',
-        dolars: '',
-        yens: '',
         bitcoin: '',
         etherum: '',
         error: false
@@ -34,8 +32,6 @@ class Form extends Component {
                 console.log(data);
                 this.setState({
                     euros: data.Euro,
-                    dolars: data.Dolar,
-                    yens: data.Yen,
                     bitcoin: data.Bitcoin,
                     etherum: data.Ethereum
                 })
@@ -82,7 +78,7 @@ class Form extends Component {
 
     render(){
         const message = (this.state.error) ? <Error message="Check if an input is empty" /> : '';
-        const { euros, dolars, yens, bitcoin, etherum } = this.state
+        const { euros, bitcoin, etherum } = this.state
         const {user} = this.props;
         const { username } = user;
         return(
@@ -90,9 +86,7 @@ class Form extends Component {
         <table>
             <thead>
                 <tr>
-                    <th>Euros</th>
-                    <th>Dolars</th>
-                    <th>Yens</th>
+                    <th>Euros </th>
                     <th>Bitcoin</th> 
                     <th>Etherum</th>                             
                 </tr>
@@ -100,8 +94,6 @@ class Form extends Component {
                 <tbody>
                 <tr>
                     <td>{euros} €</td>
-                    <td>{dolars} $</td>
-                    <td>{yens} Y</td>
                     <td>{bitcoin} Btc</td> 
                     <td>{etherum} Eth</td>                             
                 </tr>
@@ -109,7 +101,7 @@ class Form extends Component {
         </table>
             
             {message}
-            <div className="row-1">
+            <div className="coin1">
                 <h2>Exchange Area { username }</h2>
                 <label>¿Qué moneda quieres convertir?</label>
                 <select
@@ -123,7 +115,7 @@ class Form extends Component {
                 </select>
             </div>
         
-            <div className="row-2">
+            <div className="coin2">
               <div>
                 <label>¿Qué cryptomoneda quieres convertir?</label>
                 <select 

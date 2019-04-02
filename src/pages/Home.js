@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Form from '../components/Form';
 import Result from '../components/Result';
 import FiatWallet from '../components/FiatWallet'; 
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { withAuth } from '../components/AuthProvider';
 import axios from 'axios';
 
 class Home extends Component {
@@ -22,18 +24,24 @@ class Home extends Component {
         })
       })
   }
+handleClick =()=>{
 
+}
   render() {
+    console.log("proooops",this.props)
     return (
       <div>
-          <h1>CryptoProject</h1>
           <Navbar data='data' />
           <FiatWallet />
+          <button onClick={this.handleClick}>Deposit</button>
           <Form exchangeCurrent={this.exchangeCurrent}/>
           <Result result={this.state.result}/>
+          <Link to={"/deposit"}>
+              <button >Do a deposit</button>
+              </Link>
       </div>
     );
   }
 }
 
-export default Home;
+export default withAuth(Home);
