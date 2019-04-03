@@ -12,7 +12,7 @@ class Navbar extends Component {
           <div class="nav">
               {/* <button onClick={this.handleClick}>Deposit haha</button> */}
               <label className="icon"><FontAwesomeIcon icon="info" /></label>  
-              <h2>CryptoBuy</h2>
+              <h2>CryptoApp</h2>
               <div className="textbox" >      
                 <button onClick={logout}><label className="icon"><FontAwesomeIcon icon="times" /></label></button>
               </div>
