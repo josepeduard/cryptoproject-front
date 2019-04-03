@@ -5,7 +5,7 @@ class FiatWallet extends Component {
 
     render(){
         return(
-        <h1>Wallet</h1>
+        <div> </div>
         )
     }
 }

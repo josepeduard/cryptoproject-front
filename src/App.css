@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700');
+
+/* ---- reset ---- */
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Heebo', sans-serif;
+    background: #282828;
+    color:white
+}
+
+.row{
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ---- Navbar ---- */
+
+.header{
+    background: #000000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.header .nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+}
+
+.header .nav i{
+    padding: 10px;
+}
+
+.header .nav .textbox button{
+    color: #ffffff;
+    padding: 10px;
+    font-size: 1.4em;
+}
+
+/* ---- Content ---- */
+
+.content{
+    margin-top: 76px;
+    height: 100vh;
+    display: flow-root;
+}
+
+.content table{
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.content table thead tr th{
+    padding: 5px 0;
+}
+
+.content table tbody tr td{
+    padding: 5px 0;
+}
+
+.user-form .divisa{
+    margin-bottom: 16px;
+}
+
+.user-form .divisa label{
+    margin-bottom: 8px;
+    display: block;
+}
+
+.user-form .divisa select{
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+}
+
+/* --- Buttons --- */
+
+
+.btn-primary{
+    background:  #4caf50;
+    border-radius: 20px;
+    color: #ffffff;
+    border: 0;
+    padding: 10px 0;
+}
+
+.button-sell-buy{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-sell-buy button{
+    width: 45%;
+}
+
+/* --- Result --- */
+
+.result p{
+ color: white;
+}

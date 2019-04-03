@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from '../components/Form';
 import Result from '../components/Result';
-import FiatWallet from '../components/FiatWallet'; 
+// import FiatWallet from '../components/FiatWallet'; 
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../components/AuthProvider';
@@ -31,13 +31,14 @@ handleClick =()=>{
     return (
       <div>
           <Navbar data='data' />
-          <FiatWallet />
-          <button onClick={this.handleClick}>Deposit</button>
-          <Form exchangeCurrent={this.exchangeCurrent} result={this.state.result}/>
-          <Result result={this.state.result}/>
-          <Link to={"/deposit"}>
-              <button >Do a deposit</button>
-              </Link>
+          <div className="content row">
+            {/* <FiatWallet /> */}
+            <Form exchangeCurrent={this.exchangeCurrent} result={this.state.result}/>
+            <Result result={this.state.result}/>
+            <Link to={"/deposit"}>
+              <button className="btn btn-primary">Deposit/Withdraw</button>
+            </Link>
+          </div>
       </div>
     );
   }

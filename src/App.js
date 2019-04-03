@@ -12,6 +12,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import './App.css'
 
 
 

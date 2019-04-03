@@ -9,11 +9,13 @@ import walletService from '../lib/wallet-service'
 class Form extends Component {
     state = {
         cryptos:[],
+        cryptoName:'',
         coin: 0,
         crypto: 0,
         euros: 0,
         bitcoin: 0,
         etherum: 0,
+        litecoin:0,
         error: false
     }
     //Este método solo se ejecuta justo después de que el componente haya sido montado en el DOM.
@@ -31,7 +33,8 @@ class Form extends Component {
                 this.setState({
                     euros: data.Euro,
                     bitcoin: data.Bitcoin,
-                    etherum: data.Ethereum
+                    etherum: data.Ethereum,
+                    litecoin: data.Litecoin
                 })
             })
             .catch((err) =>{
@@ -43,8 +46,10 @@ class Form extends Component {
     handleChange = e => {
         const {name, value} = e.target;
         this.setState({
-            [name]:value 
+            [name]:value,
+            cryptoName:value
         })
+       
     }
 
     quoteCurrency = e => {
@@ -72,7 +77,29 @@ class Form extends Component {
 
         this.props.exchangeCurrent(exchange);
     }
+    buyLitecoin = () =>{
+        const litecoinClean = this.props.result.PRICE.split("€ ")
+        const litecoinPrice = litecoinClean[1].split(',').join('')
+        
+        console.log(litecoinPrice)
+        this.setState({
+            litecoin: this.state.litecoin + 1,
+            euros: this.state.euros - parseInt(litecoinPrice) - 3
+        }) 
+       
+    }
 
+    sellLitecoin = () =>{
+        const litecoinClean = this.props.result.PRICE.split("€ ")
+        const litecoinPrice = litecoinClean[1].split(',').join('')
+        
+        console.log(litecoinPrice)
+        this.setState({
+            litecoin: this.state.litecoin - 1,
+            euros: this.state.euros + parseInt(litecoinPrice) - 3
+        }) 
+       
+    }
     buyEtherum = () =>{
         const etherumClean = this.props.result.PRICE.split("€ ")
         const etherumPrice = etherumClean[1].split(',').join('')
@@ -80,7 +107,7 @@ class Form extends Component {
         console.log(etherumPrice)
         this.setState({
             etherum: this.state.etherum + 1,
-            euros: this.state.euros - parseInt(etherumPrice) - 30
+            euros: this.state.euros - parseInt(etherumPrice) - 10
         }) 
        
     }
@@ -92,7 +119,7 @@ class Form extends Component {
         console.log(etherumPrice)
         this.setState({
             etherum: this.state.etherum - 1,
-            euros: this.state.euros + parseInt(etherumPrice) - 30
+            euros: this.state.euros + parseInt(etherumPrice) - 10
         }) 
        
     }
@@ -124,82 +151,89 @@ class Form extends Component {
     
     render(){
         const message = (this.state.error) ? <Error message="Check if an input is empty" /> : '';
-        const { euros, bitcoin, etherum } = this.state
+        const { euros, bitcoin, etherum, litecoin } = this.state
         const {user} = this.props;
         const { username } = user;
         return(
         <div>
-            <table>
-            <thead>
-                <tr>
-                    <th>Euros </th>
-                    <th>Bitcoin</th> 
-                    <th>Ethereum</th>                             
-                </tr>
-            </thead>
-                <tbody>
-                <tr>
+            
+                <form className="user-form" onSubmit={this.quoteCurrency}>
                 
-                    <td>{euros} €</td>
-                    <td>{bitcoin} BTC</td> 
-                    <td>{etherum} ETC</td>                             
-                </tr>
-            </tbody>
-        </table>
+                    <div className="divisa">
+                        <h2>Step 1: Exchange Area </h2>
+                        <label>Choose your divisa</label>
+                        <select
+                            onChange={this.handleChange}
+                            name='coin'
+                            className="styleCoin"
+                            >
+                                <option value="">Moneda</option>
+                                <option value="EUR">Euros</option>                       
+                        </select>
+                    </div>
+                    
+                
+                    <div className="divisa">
+                        <div>
+                            <label>Choose your crypto</label>
+                            <select 
+                                    onChange={this.handleChange}
+                                    name="crypto"
+                                    className="tyleCoin">
+                                <option value="">Cryptomoneda</option>
+                                {Object.keys(this.state.cryptos).map(key =>(
+                                    <Cryptocoin
+                                    key={key}
+                                    crypto={this.state.cryptos[key]}
+                                    /> ))}
+                            </select>
+                        </div>
+                    </div>
+                    <button className="btn btn-primary" type="submit" value="Cambiar">Change divisa</button>
+                    {message}
+                </form> 
+                
+                <h2>Step 2: Check your wallet </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Euros </th>
+                            <th>Bitcoin</th> 
+                            <th>Ethereum</th> 
+                            <th>Litecoin</th>                              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{euros} €</td>
+                            <td>{bitcoin} BTC</td> 
+                            <td>{etherum} ETH</td>  
+                            <td>{litecoin} LIT</td>                           
+                        </tr>
+                    </tbody>
+                </table>
 
-        <div className="Buy-sell-container">
-            <div className="button-sell-buy">
-                <button className="buy" onClick={this.buyBitcoin}>Buy
-                </button>
-                <button className="Sell" onClick={this.sellBitcoin}>Sell
-                </button>
-            </div>
-            <div className="button-sell-buy">
-                <button className="buy" onClick={this.buyEtherum}>Buy
-                </button>
-                <button className="Sell" onClick={this.sellEtherum}>Sell
-                </button>
-            </div>
-        </div>
-        
-        <form onSubmit={this.quoteCurrency}>
-        
-            
 
-            
-            <div className="coin1">
-                <h2>Exchange Area { username }</h2>
-                <label>¿Qué moneda quieres convertir?</label>
-                <select
-                    onChange={this.handleChange}
-                    name='coin'
-                    className="styleCoin"
-                    >
-                        <option value="">Moneda</option>
-                        <option value="EUR">Euros</option>                       
-                </select>
+                {/******************** botones de compra ETH LTC ***********************/ }
+                
+                <div className="Buy-sell-container">
+                    <h2>Step 3: { username }, buy and sell! </h2>
+                    {this.state.cryptoName === 'BTC' ? <div className="button-sell-buy">
+                        <button className="btn btn-primary" onClick={this.buyBitcoin}>Buy BTC</button>
+                        <button className="btn btn-primary" onClick={this.sellBitcoin}>Sell BTC</button>
+                    </div> : false}
+                        
+                    {this.state.cryptoName === 'ETH' ? <div className="button-sell-buy">
+                        <button className="btn btn-primary" onClick={this.buyEtherum}>Buy</button>
+                        <button className="btn btn-primary" onClick={this.sellEtherum}>Sell</button>
+                    </div> : false}
+
+                    {this.state.cryptoName === 'LTC' ? <div className="button-sell-buy">
+                        <button className="btn btn-primary" onClick={this.buyLitecoin}>Buy</button>
+                        <button className="btn btn-primary" onClick={this.sellLitecoin}>Sell</button>
+                    </div> : false}
+                </div>
             </div>
-        
-            <div className="coin2">
-              <div>
-                <label>¿Qué cryptomoneda quieres convertir?</label>
-                <select 
-                        onChange={this.handleChange}
-                        name="crypto"
-                        className="tyleCoin">
-                      <option value="">Cryptomoneda</option>
-                      {Object.keys(this.state.cryptos).map(key =>(
-                        <Cryptocoin
-                        key={key}
-                        crypto={this.state.cryptos[key]}
-                        /> ))}
-                </select>
-              </div>
-            </div>
-            <input className="button" type="submit" value="Cambiar" />
-            {message}
-        </form> 
-        </div>
         )
     }
 }

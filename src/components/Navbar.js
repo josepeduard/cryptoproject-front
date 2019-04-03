@@ -8,14 +8,16 @@ class Navbar extends Component {
     const { isLogged, logout } = this.props;
     if (isLogged) {
       return <div>
-        <label className="icon"><FontAwesomeIcon icon="info" /></label>  
-        <h2>CryptoBuy</h2>
-        <div className="textbox" >
-            <label className="icon"><FontAwesomeIcon icon="sign-out-alt" /></label>
-            <label className="icon"><FontAwesomeIcon icon="times" /></label>                     
-            <input onClick={logout}/>
-          </div>
-        
+        <div className="row header">
+          <div class="nav">
+              {/* <button onClick={this.handleClick}>Deposit haha</button> */}
+              <label className="icon"><FontAwesomeIcon icon="info" /></label>  
+              <h2>CryptoBuy</h2>
+              <div className="textbox" >      
+                <button onClick={logout}><label className="icon"><FontAwesomeIcon icon="times" /></label></button>
+              </div>
+            </div>
+        </div> 
       </div>
     } else {
       return <div>
