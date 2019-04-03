@@ -28,13 +28,12 @@ handleClick =()=>{
 
 }
   render() {
-    console.log("proooops",this.props)
     return (
       <div>
           <Navbar data='data' />
           <FiatWallet />
           <button onClick={this.handleClick}>Deposit</button>
-          <Form exchangeCurrent={this.exchangeCurrent}/>
+          <Form exchangeCurrent={this.exchangeCurrent} result={this.state.result}/>
           <Result result={this.state.result}/>
           <Link to={"/deposit"}>
               <button >Do a deposit</button>

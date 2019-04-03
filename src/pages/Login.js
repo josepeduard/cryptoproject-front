@@ -17,10 +17,7 @@ class Login extends Component {
 
     this.props.login({ username, password })
       .then((data) => {
-        if(!data){
-          console.log("lo estamos haciendo bien")
-        }else{
-          console.log("push")
+        if(data){
         this.props.history.push('/')
         }
       })

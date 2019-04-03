@@ -8,9 +8,12 @@ import Login from './pages/Login';
 import Deposit from './pages/Deposit';
 import AuthProvider from './components/AuthProvider';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faLock } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
+
+
 
 class App extends Component {
   render() {
@@ -28,5 +31,5 @@ class App extends Component {
     )
   }
 }
-library.add(faUser, faLock)
+library.add(faUser, faLock, faTimes, faInfo)
 export default App;

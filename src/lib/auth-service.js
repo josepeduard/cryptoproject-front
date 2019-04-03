@@ -12,7 +12,6 @@ class AuthService {
     const { username, password } = user;
     return this.auth.post('/auth/signup', {username, password})
       .then(({ data }) => {
-        console.log("data auth signup:",data)
         return data
       });
   }
@@ -21,7 +20,6 @@ class AuthService {
     const { username, password } = user;
     return this.auth.post('/auth/login', {username, password})
       .then(({ data }) => {
-        console.log("data auth login",data)
         return data
       });
   }

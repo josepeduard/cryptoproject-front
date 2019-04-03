@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Result = ({result}) => {
+    if(result) console.log("props de result",result)
    
-
     return(
         <div className='result'>
             <h2>How much is it?</h2>
