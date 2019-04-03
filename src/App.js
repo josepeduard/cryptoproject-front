@@ -12,6 +12,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { faWallet } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 import './App.css'
 
 
@@ -32,5 +35,5 @@ class App extends Component {
     )
   }
 }
-library.add(faUser, faLock, faTimes, faInfo)
+library.add(faUser, faLock, faTimes, faInfo, faCoins, faWallet,faHome)
 export default App;

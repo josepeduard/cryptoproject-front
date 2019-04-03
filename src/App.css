@@ -12,7 +12,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'Heebo', sans-serif;
-    background: #282828;
+    background: #191919;
     color:white
 }
 
@@ -99,6 +99,31 @@ html {
     padding: 10px 0;
 }
 
+.btn-primary1{
+    background:  #4c8bce;
+    border-radius: 20px;
+    color: #ffffff;
+    border: 0;
+    padding: 10px 0;
+}
+
+
+.btn-primary2{
+    background:  #ce4b4b;
+    border-radius: 20px;
+    color: #ffffff;
+    border: 0;
+    padding: 10px 0;
+}
+
+.btn-primary3{
+    background:  #4caf50;
+    border-radius: 20px;
+    color: #ffffff;
+    border: 0;
+    padding: 10px 0;
+}
+
 .button-sell-buy{
     display: flex;
     justify-content: space-between;
@@ -110,6 +135,3 @@ html {
 
 /* --- Result --- */
 
-.result p{
- color: white;
-}

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Cryptocoin from './Cryptocoin'; 
 import Error from './Error'; 
 import walletService from '../lib/wallet-service'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Form extends Component {
     state = {
@@ -152,8 +153,8 @@ class Form extends Component {
     render(){
         const message = (this.state.error) ? <Error message="Check if an input is empty" /> : '';
         const { euros, bitcoin, etherum, litecoin } = this.state
-        const {user} = this.props;
-        const { username } = user;
+        // const {user} = this.props;
+        // const { username } = user;
         return(
         <div>
             
@@ -217,20 +218,23 @@ class Form extends Component {
                 {/******************** botones de compra ETH LTC ***********************/ }
                 
                 <div className="Buy-sell-container">
-                    <h2>Step 3: { username }, buy and sell! </h2>
+                    <div>
+                    <h2>Step 3: </h2>
+                    </div>
+                    {/* { username }, buy and sell!  */}
                     {this.state.cryptoName === 'BTC' ? <div className="button-sell-buy">
-                        <button className="btn btn-primary" onClick={this.buyBitcoin}>Buy BTC</button>
-                        <button className="btn btn-primary" onClick={this.sellBitcoin}>Sell BTC</button>
+                        <button className="btn btn-primary1" onClick={this.buyBitcoin}>Buy BTC</button>
+                        <button className="btn btn-primary2" onClick={this.sellBitcoin}>Sell BTC</button>
                     </div> : false}
                         
                     {this.state.cryptoName === 'ETH' ? <div className="button-sell-buy">
-                        <button className="btn btn-primary" onClick={this.buyEtherum}>Buy</button>
-                        <button className="btn btn-primary" onClick={this.sellEtherum}>Sell</button>
+                        <button className="btn btn-primary1" onClick={this.buyEtherum}>Buy</button>
+                        <button className="btn btn-primary2" onClick={this.sellEtherum}>Sell</button>
                     </div> : false}
 
                     {this.state.cryptoName === 'LTC' ? <div className="button-sell-buy">
-                        <button className="btn btn-primary" onClick={this.buyLitecoin}>Buy</button>
-                        <button className="btn btn-primary" onClick={this.sellLitecoin}>Sell</button>
+                        <button className="btn btn-primary1" onClick={this.buyLitecoin}>Buy</button>
+                        <button className="btn btn-primary2" onClick={this.sellLitecoin}>Sell</button>
                     </div> : false}
                 </div>
             </div>
