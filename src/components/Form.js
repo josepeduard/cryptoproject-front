@@ -85,7 +85,7 @@ class Form extends Component {
         console.log(litecoinPrice)
         this.setState({
             litecoin: this.state.litecoin + 1,
-            euros: this.state.euros - parseInt(litecoinPrice) - 3
+            euros: this.state.euros - parseInt(litecoinPrice) - 1
         }) 
        
     }
@@ -97,7 +97,7 @@ class Form extends Component {
         console.log(litecoinPrice)
         this.setState({
             litecoin: this.state.litecoin - 1,
-            euros: this.state.euros + parseInt(litecoinPrice) - 3
+            euros: this.state.euros - parseInt(litecoinPrice) - 1
         }) 
        
     }
@@ -108,7 +108,7 @@ class Form extends Component {
         console.log(etherumPrice)
         this.setState({
             etherum: this.state.etherum + 1,
-            euros: this.state.euros - parseInt(etherumPrice) - 10
+            euros: this.state.euros - parseInt(etherumPrice) - 3
         }) 
        
     }
@@ -120,7 +120,7 @@ class Form extends Component {
         console.log(etherumPrice)
         this.setState({
             etherum: this.state.etherum - 1,
-            euros: this.state.euros + parseInt(etherumPrice) - 10
+            euros: this.state.euros + parseInt(etherumPrice) - 3
         }) 
        
     }
@@ -132,7 +132,7 @@ class Form extends Component {
         console.log(bitcoinPrice)
         this.setState({
             bitcoin: this.state.bitcoin + 1,
-            euros: this.state.euros - parseInt(bitcoinPrice) - 30
+            euros: this.state.euros - parseInt(bitcoinPrice) - 25
         }) 
        
     }
@@ -144,7 +144,7 @@ class Form extends Component {
         console.log(bitcoinPrice)
         this.setState({
             bitcoin: this.state.bitcoin - 1,
-            euros: this.state.euros + parseInt(bitcoinPrice) - 30
+            euros: this.state.euros + parseInt(bitcoinPrice) - 25
         }) 
        
     }

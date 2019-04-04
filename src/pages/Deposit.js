@@ -80,7 +80,7 @@ class Deposit extends Component {
                     
                     </div>
                     
-                    {this.state.isShowingInfo === true?<div><h2>Commission for buyers/sellers</h2><h5>Bitcoin: 30 €</h5><h5>Etherum: 10 €</h5><h5>Litecoin: 3 €</h5></div>:<div><h1>Click i before deposit</h1></div>}
+                    {this.state.isShowingInfo === true?<div><h2>Commission for buyers/sellers</h2><h4>Bitcoin: 25 Euros</h4><h4>Etherum: 3 Euros</h4><h4>Litecoin: 1 Euros</h4></div>:<div><h1>Click i before deposit</h1></div>}
                 </div>
                 
             </div>
