@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import walletService from '../lib/wallet-service';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import Navbar2 from '../components/Navbar2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Deposit.css";
 
@@ -11,6 +11,7 @@ class Deposit extends Component {
         deposit:0,
         withdraw:0,
         euros:0,
+        isShowingInfo:false,
     }
     componentDidMount= () =>{
         walletService.getMyProfile()
@@ -50,11 +51,16 @@ class Deposit extends Component {
                 euros: this.state.euros - this.state.withdraw
             })
     }
+      handleClickInfo = () =>{
+        this.setState({
+          isShowingInfo:true
+        })
+      }
     
     render() {
         return (
             <div>
-                <Navbar data='data' />
+                <Navbar2 data='data' clickInfo={this.handleClickInfo}/>
                 <div className='deposit-box'>
                     <div className = 'deposit-box-inner'>
                     <h1>{this.state.euros}€</h1>
@@ -74,13 +80,9 @@ class Deposit extends Component {
                     
                     </div>
                     
+                    {this.state.isShowingInfo === true?<div><h2>Commission for buyers/sellers</h2><h5>Bitcoin: 30 €</h5><h5>Etherum: 10 €</h5><h5>Litecoin: 3 €</h5></div>:<div><h1>Click i before deposit</h1></div>}
                 </div>
-                <div >                    
-                    <Link to={"/"}>
-                    <label className="icon"><FontAwesomeIcon icon="home" /></label>
-                        <button className="btn" type="submit">HOME</button>
-                    </Link>
-                </div>
+                
             </div>
         );
     }

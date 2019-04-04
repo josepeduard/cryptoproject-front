@@ -1,32 +1,27 @@
 import React, { Component } from 'react';
 import { withAuth } from './AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 
 class Navbar2 extends Component {
+  
   render() {
-    const { isLogged, logout } = this.props;
-    if (isLogged) {
-      return <div>
+      return (
         <div className="row header">
           <div class="nav">
-              {/* <button onClick={this.handleClick}>Deposit haha</button> */}
-              <label className="icon"><FontAwesomeIcon icon="info" /></label>  
-              <h2>CryptoBuyas</h2>
-              <div className="textbox" >      
-                <button onClick={logout}><label className="icon"><FontAwesomeIcon icon="home" /></label></button>
+              <label onClick={this.props.clickInfo}className="icon"><FontAwesomeIcon icon="info" /></label>  
+              <h2>CryptoApp</h2>
+              <div className="textbox" >  
+              <Link to={"/"}>   
+                <button><label className="icon"><FontAwesomeIcon icon="home" /></label></button>
+              </Link> 
               </div>
             </div>
         </div> 
-      </div>
-    } else {
-      return <div>
-        {/* <Link to='/login'>Login</Link>
-        <Link to='/signup'>Signup</Link> */}
-      </div>
-    }
-  
-  }
+      )
+    } 
+
 }
 
 export default withAuth(Navbar2);
